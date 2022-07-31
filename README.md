@@ -8,3 +8,12 @@ Until now I have only visualized one dataset (Life Expectancy - WHO).
 You can download this dataset at [Kaggle](https://www.kaggle.com/datasets/kumarajarshi/life-expectancy-who). For this data, you need to name it `Life Expectancy Data.csv`, or you have to change the config in `app.py`.
 
 I also provided a Jupyter Notebook (see in [Colab](https://colab.research.google.com/drive/1gzqicuUJm5UeOuVYkHRgL0WQla1jVRLv?usp=sharing)), I do exactly the same work of visualization with this notebook as I have done with the web app. It is merely that you can choose which type of information you want to see in web app with UI.
+
+## Using
+
+### Step 1: 
+Run this `pip install requirements.txt`
+### Step 2:
+Run this `flask run`
+### Step 3:
+Follow the link provided in terminal
