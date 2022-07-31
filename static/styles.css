@@ -1,0 +1,32 @@
+.navbar-brand{
+    font-size: 50px;
+    padding: 10px;
+}
+
+.navbar{
+    background-color: yellow;
+}
+
+form{
+    margin: 5px
+}
+
+main{
+    margin-top: 100px;
+}
+
+h5,h2,h3{
+    margin-top: 50px;
+}
+
+.add-margin{
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+#regenerate {
+  position: fixed; /* Fixed/sticky position */
+  top: 30px; /* Place the button at the bottom of the page */
+  right: 30px; /* Place the button 30px from the right */
+  z-index: 99; /* Make sure it does not overlap */
+}
