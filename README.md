@@ -5,6 +5,6 @@ To make this web app up and running, first, you need to download the dataset(s) 
 
 Until now I have only visualized one dataset (Life Expectancy - WHO).
 
-You can download this dataset at [Kaggle](https://www.kaggle.com/datasets/kumarajarshi/life-expectancy-who).
+You can download this dataset at [Kaggle](https://www.kaggle.com/datasets/kumarajarshi/life-expectancy-who). For this data, you need to name it `Life Expectancy Data.csv`, or you have to change the config in `app.py`.
 
 I also provided a Jupyter Notebook, I do exactly the same work of visualization with this notebook as I have done with the web app. It is merely that you can choose which type of information you want to see in web app with UI.
