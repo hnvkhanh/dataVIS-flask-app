@@ -1,0 +1,114 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block main %}
+
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+
+<div class="alert alert-info" role="alert">
+    You have to click "Re-generate Visualization" to change the visualization. Without that your change(s) will not take any affects.
+</div>
+
+<div>
+    <form action="/life_expectancy_data" method="post" class="form-inline" >
+        <div class="add-margin text-center fixed-top">
+            <button type="submit" class="btn btn-outline-dark" id="regenerate"> Re-generate Visualization </button>
+        </div>
+        <h1>
+            Visualize data on map
+        </h1>
+        <h5>
+            Choose type of data to visulize
+        </h5>
+        <div class= "form-group">
+            <ul class="list-group list-group-horizontal">
+                {% for meta in METAS[:10] %}
+                <li class="form-group list-group-item">
+                    <input class="form-check-input me-1" type="radio" value="{{meta}}" id="{{meta}}" name="meta">
+                    <label class="form-check-label" >{{meta}}</label>
+                </li>
+                {% endfor %}
+            </ul>
+            <ul class="list-group list-group-horizontal">
+                {% for meta in METAS[10:] %}
+                <li class="form-group list-group-item">
+                    <input class="form-check-input me-1" type="radio" value="{{meta}}" id="{{meta}}" name="meta">
+                    <label class="form-check-label" >{{meta}}</label>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <h5>
+            Choose year
+        </h5>
+        <div class= "form-group">
+            <ul class="list-group list-group-horizontal">
+
+                {% for year in YEARS %}
+                <li class="form-group list-group-item">
+                    <input class="form-check-input me-1" type="radio" value="{{year}}" name="year" id="{{year}}">
+                    <label class="form-check-label" >{{year}}</label>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <h3>
+            {{chosen_meta}} by countries in {{chosen_year}}
+        </h3>
+
+        <div class="chart" id="map">
+            <script>
+                document.getElementById("{{ chosen_meta }}").checked = true;
+                document.getElementById({{ chosen_year }}).checked = true;
+
+                var map = {{MAP | safe}};
+                Plotly.plot('map',map,{});
+
+            </script>
+        </div>
+
+        <h1>
+            Visualize data of countries through years (2000-2015)
+        </h1>
+
+
+        <div class="input-group add-margin">
+            <select class="form-select" name="selected_country">
+                {% for country in COUNTRIES %}
+                <option value="{{country}}" id="{{country}}">{{country}}</option>
+                {% endfor %}
+            </select>
+
+        </div>
+
+    </form>
+</div>
+
+<div class="char text-center" id="line-graph">
+    <script>
+        document.getElementById("{{ chosen_country }}").selected = true;
+        var fig = {{FIG | safe}};
+        Plotly.plot('line-graph',fig,{});
+    </script>
+</div>
+
+<div>
+    <h1>
+        Heatmap (correlation between factors)
+    </h1>
+    <div id="heatmap">
+        <script>
+            var heatmap = {{HEATMAP | safe}};
+            Plotly.plot('heatmap',heatmap,{});
+        </script>
+    </div>
+</div>
+
+
+{% endblock %}
